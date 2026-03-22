@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Surat Cinta Buat Ayinnn</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    :root {
+      --pink-primary: #ff4f81;
+      --pink-soft: #ffdde1;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 450px;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 30px 20px;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      position: relative;
+      z-index: 10;
+    }
+
+    .gif-container {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .gif-container img {
+      width: 180px;
+      height: 180px;
+      border-radius: 20px;
+      object-fit: cover;
+    }
+
+    h1 {
+      color: #7d1935;
+      font-size: 1.5rem;
+      margin: 10px 0;
+      line-height: 1.4;
+    }
+
+    p {
+      color: #b9315e;
+      font-size: 1rem;
+      margin-bottom: 25px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+      min-height: 150px;
+    }
+
+    button {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 15px 30px;
+      border-radius: 50px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    #btn_mau {
+      background-color: var(--pink-primary);
+      color: white;
+      box-shadow: 0 5px 15px rgba(255, 79, 129, 0.4);
+      z-index: 999;
+      width: 200px;
+    }
+
+    #btn_gamau {
+      background-color: white;
+      color: var(--pink-primary);
+      border: 2px solid var(--pink-primary);
+      width: 150px;
+      position: relative;
+    }
+
+    #success-content {
+      display: none;
+    }
+
+    .love-particles {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Animasi melayang untuk dekorasi */
+    .floating-heart {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.6);
+      z-index: 1;
+      animation: heartFloat 6s infinite ease-in;
+    }
+
+    @keyframes heartFloat {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.8; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="bg-hearts"></div>
+
+  <div class="container animate__animated animate__fadeIn">
+    
+    <div id="main-content">
+      <div class="gif-container">
+        <img id="gif-image" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3Z3bjdnemRpYm93MHE4ZGVxMHVjaXZqcnFwd3hwc29yYzFodnVnNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LxfdG9kpkLIoOiDVRR/giphy.gif" alt="Panda Sad">
+      </div>
+
+      <h1 id="headline">Ayinnn Sayang... 🥺</h1>
+      <p id="subline">Maafin Domi ya udah bikin ngambek gara-gara keasikan game...</p>
+
+      <div class="btn-group">
+        <button id="btn_mau" onclick="tahapanMaaf()">Iya, Domi dimaafin ❤️</button>
+        <button id="btn_gamau" onmouseover="lari(this)" onclick="lari(this)">GAK MAU! 😤</button>
+      </div>
+    </div>
+
+    <div id="success-content" class="animate__animated animate__heartBeat">
+      <div class="gif-container">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/S60CrN9iYMfJatH29A/giphy.gif" alt="Happy">
+      </div>
+      <h1>YEEAAAYYY! 😭❤️</h1>
+      <p>Makasih Mbill Cantik! Janji deh nanti gamenya dikurangin, main bareng kamunya dibanyakin! Love you!</p>
+      <button onclick="location.reload()" style="background: none; color: #7d1935; text-decoration: underline; font-size: 12px;">Minta maaf lagi? (Klik sini)</button>
+    </div>
+
+  </div>
+
+  <script>
+    let clickCount = 0;
+    let scale = 1;
+
+    // Tambahkan dekorasi hati di background
+    const bgHearts = document.getElementById('bg-hearts');
+    for (let i = 0; i < 15; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      bgHearts.appendChild(heart);
+    }
+
+    function lari(btn) {
+      clickCount++;
+      
+      // Tombol Maafin makin gede tiap kali dia klik Gak Mau
+      scale += 0.2;
+      const btnMau = document.getElementById('btn_mau');
+      btnMau.style.transform = `scale(${scale})`;
+      
+      // Update teks biar makin kasihan
+      const subline = document.getElementById('subline');
+      if(clickCount == 2) subline.innerText = "Plisss... jangan marah lama-lama 🥺";
+      if(clickCount == 4) subline.innerText = "Tuh liat tombolnya aja maksa mau dimaafin! 😭";
+      if(clickCount == 6) subline.innerText = "Duh, tangannya Domi pegel nih minta maaf mulu..";
+
+      // Logika lari
+      const parent = document.querySelector('.btn-group');
+      const maxX = window.innerWidth - btn.clientWidth - 20;
+      const maxY = window.innerHeight - btn.clientHeight - 20;
+
+      const newX = Math.random() * maxX;
+      const newY = Math.random() * maxY;
+
+      btn.style.position = 'fixed';
+      btn.style.left = newX + 'px';
+      btn.style.top = newY + 'px';
+    }
+
+    function tahapanMaaf() {
+      document.getElementById('main-content').style.display = 'none';
+      document.getElementById('success-content').style.display = 'block';
+      
+      // Efek Konfeti Hati
+      celebrate();
+    }
+
+    function celebrate() {
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          let love = document.createElement("div");
+          love.innerHTML = ["💖","❤️","💗","🌸","✨"][Math.floor(Math.random() * 5)];
+          love.style.position = "fixed";
+          love.style.left = Math.random() * 100 + "vw";
+          love.style.top = "100vh";
+          love.style.fontSize = Math.random() * 30 + 10 + "px";
+          love.style.zIndex = "9999";
+          love.style.transition = "transform 4s linear, opacity 4s";
+          
+          document.body.appendChild(love);
+
+          const destX = (Math.random() - 0.5) * 500;
+          
+          requestAnimationFrame(() => {
+            love.style.transform = `translate(${destX}px, -120vh) rotate(${Math.random() * 360}deg)`;
+            love.style.opacity = "0";
+          });
+
+          setTimeout(() => love.remove(), 4000);
+        }, i * 50);
+      }
+    }
+  </script>
+</body>
+</html>
